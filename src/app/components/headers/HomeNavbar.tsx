@@ -45,13 +45,13 @@ export function HomeNavbar() {
             {/* BASKET */}
             {!authMember ? (
               <Box className={"hover-line"}>
-                <Button variant="contained" className="login-button">
+                <Button variant="contained" className={"login-button"}>
                   Login
                 </Button>
               </Box>
             ) : (
               <img
-                className="user-avatar"
+                className={"user-avatar"}
                 src={"/icons/default-user.svg"}
                 aria-haspopup={"true"}
               />
