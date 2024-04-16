@@ -1,7 +1,4 @@
-import React from "react";
-import { Box, Button, Container, Stack, Typography } from "@mui/material";
-import { RippleBadge } from "./MaterialTheme/styled";
-import { Link, Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import HomePage from "./screens/homePage";
 import ProductsPage from "./screens/productsPage";
 import OrdersPage from "./screens/ordersPage";
@@ -13,6 +10,7 @@ import HelpPage from "./screens/helpPage";
 import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
+// import Test from "./screens/Test";
 
 function App() {
   const location = useLocation();
@@ -39,6 +37,7 @@ renders the first one that matches the current URL. */}
           <HelpPage />
         </Route>
         <Route path="/">
+          {/* <Test /> */}
           <HomePage />
         </Route>
       </Switch>
