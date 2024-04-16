@@ -33,20 +33,23 @@ class Test extends React.Component {
 
   componentDidUpdate() {}
 
-  // render() {
-  //   return (
-  //     <div>
-  //       <h1> My {this.state.brand} </h1>
-  //       <p>
-  //         Color: {this.state.color} - Model: {this.state.model} from
-  //         {this.state.year}
-  //       </p>
-  //       <button type="button" onClick={this.changeDetail}>
-  //         Change Detail
-  //       </button>
-  //     </div>
-  //   );
-  // }
+  render() {
+    return (
+      <div>
+        // <h1> My {this.state.brand} </h1>
+        //{" "}
+        <p>
+          // Color: {this.state.color} - Model: {this.state.model} from //{" "}
+          {this.state.year}
+          //{" "}
+        </p>
+        //{" "}
+        <button type="button" onClick={this.changeDetail}>
+          // Change Detail //{" "}
+        </button>
+      </div>
+    );
+  }
 }
 
 export default Test;
