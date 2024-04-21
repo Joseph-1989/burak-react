@@ -36,16 +36,13 @@ class Test extends React.Component {
   render() {
     return (
       <div>
-        // <h1> My {this.state.brand} </h1>
-        //{" "}
+        <h1> My {this.state.brand} </h1>
         <p>
-          // Color: {this.state.color} - Model: {this.state.model} from //{" "}
+          Color: {this.state.color} - Model: {this.state.model} from
           {this.state.year}
-          //{" "}
         </p>
-        //{" "}
         <button type="button" onClick={this.changeDetail}>
-          // Change Detail //{" "}
+          Change Detail
         </button>
       </div>
     );
