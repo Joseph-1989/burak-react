@@ -9,7 +9,7 @@ export interface Member {
   memberPassword: string;
   memberAddress?: string;
   memberDesc?: string;
-  memberImage?: string;
+  memberImage?: string[];
   memberPoints: number;
   createdAt: Date;
   updatedAt: Date;

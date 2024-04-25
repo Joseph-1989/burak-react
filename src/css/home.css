@@ -89,6 +89,17 @@
   cursor: pointer;
 }
 
+.homepage .popular-dishes-frame .cards-frame .card .img {
+  /* Rectangle */
+  position: absolute;
+  width: 300px;
+  height: 430px;
+  /* left: 976px;
+  right: -976px;
+  top: 1141px;
+  bottom: -1141px; */
+}
+
 .homepage .popular-dishes-frame .cards-frame .card .card-cover {
   background: linear-gradient(
       to top,
