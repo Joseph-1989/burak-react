@@ -22,6 +22,7 @@ import { Product } from "../../../lib/types/product";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
+import { Console } from "console";
 
 /** REDUX SLICE & SELECTOR */
 
@@ -46,6 +47,7 @@ const restaurantRetriever = createSelector(
 
 export default function ChosenProduct() {
   const { productId } = useParams<{ productId: string }>();
+  console.log(" :>> ", productId);
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
   const { chosenProduct } = useSelector(chosenProductRetriever);
   const { restaurant } = useSelector(restaurantRetriever);
