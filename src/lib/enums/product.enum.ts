@@ -24,4 +24,7 @@ export enum ProductCollection {
   SALAD = "SALAD",
   SNACK = "SNACK",
   OTHER = "OTHER",
+  DESSERT = "DESSERT",
+  ALCOHOL = "ALCOHOL",
+  NON_ALCOHOL = "NON_ALCOHOL",
 }
