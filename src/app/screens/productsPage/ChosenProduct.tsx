@@ -10,7 +10,6 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
 import { setRestaurant, setChosenProduct } from "./slice";
@@ -22,7 +21,7 @@ import { Product } from "../../../lib/types/product";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
-import { Console } from "console";
+import { CartItem } from "../userPage/search";
 
 /** REDUX SLICE & SELECTOR */
 
@@ -43,9 +42,14 @@ const restaurantRetriever = createSelector(
   })
 );
 
+interface ChosenProductsProps {
+  onAdd: (item: CartItem) => void;
+}
+
 /** COMPONENT */
 
-export default function ChosenProduct() {
+export default function ChosenProduct(props: ChosenProductsProps) {
+  const { onAdd } = props;
   const { productId } = useParams<{ productId: string }>();
   console.log(" :>> ", productId);
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
@@ -121,7 +125,21 @@ export default function ChosenProduct() {
               </span>
             </div>
             <div className={"button-box"}>
-              <Button variant="contained">Add To Basket</Button>
+              <Button
+                variant="contained"
+                onClick={(e) => {
+                  onAdd({
+                    _id: chosenProduct._id,
+                    quantity: 1,
+                    name: chosenProduct.productName,
+                    price: chosenProduct.productPrice,
+                    image: chosenProduct.productImages[0],
+                  });
+                  e.stopPropagation();
+                }}
+              >
+                Add To Basket
+              </Button>
             </div>
           </Box>
         </Stack>

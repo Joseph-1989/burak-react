@@ -11,21 +11,38 @@ import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
 import Test from "./screens/Test";
+import useBasket from "./hooks/useBasket";
 
 function App() {
   const location = useLocation();
-  console.log("location:", location);
+  const { cartItems, onAdd, onRemove, onDelete, onDeleteAll } = useBasket();
 
   return (
     <>
-      {location.pathname === "/" ? <HomeNavbar /> : <OtherNavbar />}
+      {location.pathname === "/" ? (
+        <HomeNavbar
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+        />
+      ) : (
+        <OtherNavbar
+          cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+        />
+      )}
 
       {/* A <Switch> looks through its children ‹Route>s and
 renders the first one that matches the current URL. */}
 
       <Switch>
         <Route path="/products">
-          <ProductsPage />
+          <ProductsPage onAdd={onAdd} />
         </Route>
         <Route path="/orders">
           <OrdersPage />

@@ -7,7 +7,6 @@ import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import SearchAppBar from "../../components/searchbar";
 import SearchIcon from "@mui/icons-material/Search";
 import ProductService from "../../services/ProductService";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,10 +16,9 @@ import { createSelector } from "reselect";
 import { retrieveProducts } from "./selector";
 import { Product, ProductInquiry } from "../../../lib/types/product";
 import { ProductCollection } from "../../../lib/enums/product.enum";
-import { error } from "console";
 import { serverApi } from "../../../lib/config";
-import { Collections } from "@mui/icons-material";
 import { useHistory } from "react-router-dom";
+import { CartItem } from "../userPage/search";
 
 /** REDUX SLICE & SELECTOR */
 
@@ -31,9 +29,14 @@ const productsRetriever = createSelector(retrieveProducts, (products) => ({
   products,
 }));
 
+interface ProductsProps {
+  onAdd: (item: CartItem) => void;
+}
+
 /** COMPONENT */
 
-export default function Products() {
+export default function Products(props: ProductsProps) {
+  const { onAdd } = props;
   /** REDUX SLICE & SELECTOR */
   const { setProducts } = actionDispatch(useDispatch());
   const { products } = useSelector(productsRetriever);
@@ -263,7 +266,19 @@ export default function Products() {
                         <div>
                           <div className={"product-sale"}>{sizeVolume}</div>
 
-                          <Button className={"shop-btn"}>
+                          <Button
+                            className={"shop-btn"}
+                            onClick={(e) => {
+                              onAdd({
+                                _id: product._id,
+                                quantity: 1,
+                                name: product.productName,
+                                price: product.productPrice,
+                                image: product.productImages[0],
+                              });
+                              e.stopPropagation();
+                            }}
+                          >
                             <img
                               src={"/icons/shopping-cart.svg"}
                               // style={{ display: "flex" }}
