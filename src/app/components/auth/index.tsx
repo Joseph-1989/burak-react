@@ -7,10 +7,11 @@ import { Fab, Stack, TextField } from "@mui/material";
 import styled from "styled-components";
 import LoginIcon from "@mui/icons-material/Login";
 import { T } from "../../../lib/types/common";
-import { LoginInput, MemberInput } from "../../../lib/types/member";
+import { LoginInput, Member, MemberInput } from "../../../lib/types/member";
 import { Messages } from "../../../lib/config";
 import MemberService from "../../services/MemberService";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { useGlobals } from "../../hooks/useGlobals";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -49,6 +50,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const [memberNick, setMemberNick] = useState<string>("");
   const [memberPhone, setMemberPhone] = useState<string>("");
   const [memberPassword, setMemberPassword] = useState<string>("");
+  const { setAuthMember } = useGlobals();
 
   /** HANDLERS **/
 
@@ -88,6 +90,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       const result = await member.signup(signupInput);
 
       //  Saving authenticated user
+      setAuthMember(result);
       handleSignupClose();
     } catch (err) {
       console.log(err);
@@ -110,6 +113,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
       const result = await member.login(loginInput);
 
       //  Saving authenticated user
+      setAuthMember(result);
       handleLoginClose();
     } catch (err) {
       console.log(err);
