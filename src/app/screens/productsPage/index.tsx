@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import ChosenProduct from "./ChosenProduct";
 import Products from "./Products";
 import "../../../css/products.css";
-import { CartItem } from "../userPage/search";
+import { CartItem } from "../../../lib/types/search";
 
 interface ProductsPageProps {
   onAdd: (item: CartItem) => void;

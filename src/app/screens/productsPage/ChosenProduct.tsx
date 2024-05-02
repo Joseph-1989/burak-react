@@ -21,7 +21,7 @@ import { Product } from "../../../lib/types/product";
 import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import { serverApi } from "../../../lib/config";
-import { CartItem } from "../userPage/search";
+import { CartItem } from "../../../lib/types/search";
 
 /** REDUX SLICE & SELECTOR */
 

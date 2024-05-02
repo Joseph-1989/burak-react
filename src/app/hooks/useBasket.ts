@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CartItem } from "../screens/userPage/search";
+import { CartItem } from "../../lib/types/search";
 
 const useBasket = () => {
   const cartJson: string | null = localStorage.getItem("cartData");
