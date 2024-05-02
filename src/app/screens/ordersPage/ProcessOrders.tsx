@@ -7,8 +7,13 @@ import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { retrieveProcessOrders } from "./selector";
 import { Product } from "../../../lib/types/product";
-import { serverApi } from "../../../lib/config";
-import { Order, OrderItem } from "../../../lib/types/order";
+import { Messages, serverApi } from "../../../lib/config";
+import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/order";
+import { useGlobals } from "../../hooks/useGlobals";
+import { T } from "../../../lib/types/common";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import OrderService from "../../services/OrderService";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
 
 /** REDUX SLICE & SELECTOR **/
 const processOrdersRetriever = createSelector(
@@ -16,8 +21,37 @@ const processOrdersRetriever = createSelector(
   (processOrders) => ({ processOrders })
 );
 
-export default function ProcessOrders() {
+interface ProcessOrdersProps {
+  setValue: (input: string) => void;
+}
+
+export default function ProcessOrders(props: ProcessOrdersProps) {
+  const { setValue } = props;
+  const { authMember, setOrderBuilder } = useGlobals();
   const { processOrders } = useSelector(processOrdersRetriever);
+
+  /* HANDLERS */
+
+  const finishOrderHandler = async (e: T) => {
+    try {
+      if (!authMember) throw new Error(Messages.error2);
+      const orderId = e.target.value;
+      const input: OrderUpdateInput = {
+        orderId: orderId,
+        orderStatus: OrderStatus.FINISH,
+      };
+      const confirmation = window.confirm("Have you received your order?");
+      if (confirmation) {
+        const order = new OrderService();
+        await order.updateOrder(input);
+        setValue("3");
+        setOrderBuilder(new Date());
+      }
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+  };
   return (
     <TabPanel value={"2"}>
       <Stack>
@@ -65,7 +99,12 @@ export default function ProcessOrders() {
                 <p className={"data-comp l"}>
                   {moment().format("YY-MM-DD HH: mm")}
                 </p>
-                <Button variant="contained" className={"verify-button"}>
+                <Button
+                  value={order._id}
+                  variant="contained"
+                  className={"verify-button"}
+                  onClick={finishOrderHandler}
+                >
                   Verify to Fulfil
                 </Button>
               </Box>
