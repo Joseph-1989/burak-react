@@ -91,7 +91,6 @@ export default function OrdersPage() {
         <Stack className={"order-right"}>
           <Box className={"order-info-box"}>
             <Box className={"member-box"}>
-              {/* <img className={"martin-img"} src="/img/justin.webp" alt="" /> */}
               <div className={"order-user-img"}>
                 <img
                   src={
@@ -113,12 +112,10 @@ export default function OrdersPage() {
                   />
                 </div>
               </div>
-
               <span className={"order-user-name"}>
                 {authMember?.memberNick}
               </span>
               <span className={"order-user-prof"}>
-                {" "}
                 {authMember?.memberType}
               </span>
               <Box className={"liner"}></Box>

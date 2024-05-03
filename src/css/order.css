@@ -1,7 +1,7 @@
 .order-page {
   width: 100%;
   height: auto;
-  background: #fff;
+  /* background: #b54c4c; */
   display: flex;
 }
 
@@ -16,60 +16,72 @@
 .order-page .order-left {
   width: 860px;
   height: auto;
-  /* background-color: #56b74d; */
+  /* background-color: #4fd4e6; */
 }
 
 .order-page .order-right {
-  width: 360px;
+  width: 460px;
   height: auto;
-  margin-top: 86px;
-  margin-left: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: #56b74d; */
+  /* background-color: #dbc63f; */
 }
 
 .order-page .order-right .order-info-box {
   width: 360px;
-  height: 280px;
-  padding-top: 30px;
+  height: 300px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background: #e679db; */
+  /* background: #61ecec; */
   box-shadow: 15px 14px 4px rgba(0, 0, 0, 0.25),
     inset -1px 0px 16px 13px rgb(142, 140, 171);
   border-radius: 16px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .order-page .order-right .order-info-box .member-box {
   position: relative;
   width: 360px;
-  height: 180px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+  /* background-color: #edd955; */
+}
+
+.order-page .order-right .order-info-box .member-box .order-user-img {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  /* background-color: #79dbb7; */
+  /* background-color: #6eed55; */
 }
 
-.order-page .order-right .order-info-box .member-box .martin-img {
-  margin-top: 60px;
-  border-radius: 35%;
-  width: 120px;
-  height: 120px;
-}
-
-.corder-page .order-info-box .order-user-img .order-user-avatar {
+.order-page
+  .order-right
+  .order-info-box
+  .member-box
+  .order-user-img
+  .order-user-avatar {
   width: 117px;
   height: 112px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 37px;
+  /* background-color: rgb(0, 255, 85); */
 }
 
-.order-page .order-info-box .order-user-icon-box {
+.order-page
+  .order-right
+  .order-info-box
+  .member-box
+  .order-user-img
+  .order-user-icon-box {
   position: absolute;
   padding: 5px;
   width: 30px;
@@ -79,6 +91,7 @@
   display: flex;
   background: rgba(0, 0, 0, 0.33);
   border-radius: 37px;
+  /* background-color: #56b74d; */
 }
 
 .order-page .order-user-icon-box .order-user-prof-img {
@@ -100,7 +113,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  line-height: 36px;
+  line-height: 16px;
   color: #a1a1a1;
 }
 
@@ -109,17 +122,6 @@
   border: 1.5px solid #636161;
   margin-top: 15px;
   margin-bottom: 8px;
-}
-
-.order-page
-  .order-container
-  .order-right
-  .order-info-box
-  .member-box
-  .order-user-img {
-  position: absolute;
-  margin-left: 95px;
-  margin-bottom: 45px;
 }
 
 .order-page .order-right .order-info-box .member-box .order-user-address {
